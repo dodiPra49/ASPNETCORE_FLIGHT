@@ -11,13 +11,17 @@
         <div class="card-body p-4 bg-light">
             <form id="flightSearchForm">
                 <div class="row g-3">
-                    <div class="col-md-5">
+                    <div class="col-md-3">
                         <label for="depIata" class="form-label fw-bold">Keberangkatan (IATA)</label>
-                        <input type="text" class="form-control form-control-lg text-uppercase" id="depIata" name="depIata" placeholder="Contoh: CGK" maxlength="3" required>
+                        <input type="text" class="form-control form-control-lg text-uppercase" id="depIata" name="depIata" placeholder="CGK" maxlength="3" required>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-3">
                         <label for="arrIata" class="form-label fw-bold">Kedatangan (IATA)</label>
-                        <input type="text" class="form-control form-control-lg text-uppercase" id="arrIata" name="arrIata" placeholder="Contoh: NRT" maxlength="3">
+                        <input type="text" class="form-control form-control-lg text-uppercase" id="arrIata" name="arrIata" placeholder="NRT" maxlength="3">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="airlineName" class="form-label fw-bold">Maskapai (Opsional)</label>
+                        <input type="text" class="form-control form-control-lg" id="airlineName" name="airlineName" placeholder="Contoh: Garuda Indonesia">
                     </div>
                     <div class="col-md-2 d-flex align-items-end">
                         <button type="submit" class="btn btn-primary btn-lg w-100 shadow" id="btnSearch">

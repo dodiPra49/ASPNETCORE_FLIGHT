@@ -19,10 +19,10 @@ namespace FlightScheduleApp.Services
             _logger = logger;
         }
 
-        public async Task<FlightResponse?> GetFlightsAsync(string depIata, string? arrIata)
+        public async Task<FlightResponse?> GetFlightsAsync(string depIata, string? arrIata, string? airlineName = null)
         {
             // Build cache key based on query parameters
-            string cacheKey = $"flights_{depIata}_{arrIata ?? "any"}";
+            string cacheKey = $"flights_{depIata}_{arrIata ?? "any"}_{airlineName ?? "any"}";
 
             // Check if we have cached data to save API limits
             if (_cache.TryGetValue(cacheKey, out FlightResponse? cachedResponse))
@@ -39,6 +39,12 @@ namespace FlightScheduleApp.Services
             if (!string.IsNullOrEmpty(arrIata))
             {
                 requestUri += $"&arr_iata={arrIata.ToLower()}";
+            }
+            
+            if (!string.IsNullOrEmpty(airlineName))
+            {
+                // Note: AviationStack accepts airline_name. For better matching, it might be URL encoded.
+                requestUri += $"&airline_name={Uri.EscapeDataString(airlineName)}";
             }
 
             try

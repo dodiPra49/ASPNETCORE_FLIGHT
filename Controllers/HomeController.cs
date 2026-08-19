@@ -22,14 +22,14 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> SearchFlights(string depIata, string? arrIata)
+    public async Task<IActionResult> SearchFlights(string depIata, string? arrIata, string? airlineName)
     {
         if (string.IsNullOrWhiteSpace(depIata))
         {
             return BadRequest("Departure IATA code is required.");
         }
 
-        var response = await _aviationStackService.GetFlightsAsync(depIata, arrIata);
+        var response = await _aviationStackService.GetFlightsAsync(depIata, arrIata, airlineName);
         
         if (response == null)
         {

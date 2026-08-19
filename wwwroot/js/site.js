@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function searchFlights() {
     const depIata = document.getElementById("depIata").value.trim();
     const arrIata = document.getElementById("arrIata").value.trim();
+    const airlineName = document.getElementById("airlineName") ? document.getElementById("airlineName").value.trim() : "";
     
     if (!depIata) {
         showError("Kode IATA keberangkatan wajib diisi.");
@@ -36,6 +37,9 @@ function searchFlights() {
     let url = `/Home/SearchFlights?depIata=${encodeURIComponent(depIata)}`;
     if (arrIata) {
         url += `&arrIata=${encodeURIComponent(arrIata)}`;
+    }
+    if (airlineName) {
+        url += `&airlineName=${encodeURIComponent(airlineName)}`;
     }
 
     fetch(url)
