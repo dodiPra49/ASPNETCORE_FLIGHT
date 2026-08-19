@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Pencarian Jadwal Penerbangan";
+}
+
+<div class="container mt-5">
+    <!-- Card Pencarian -->
+    <div class="card shadow-lg border-0 rounded-lg">
+        <div class="card-header bg-primary text-white text-center py-4 rounded-top">
+            <h3 class="mb-0"><i class="fas fa-plane-departure"></i> Cari Jadwal Penerbangan Global</h3>
+        </div>
+        <div class="card-body p-4 bg-light">
+            <form id="flightSearchForm">
+                <div class="row g-3">
+                    <div class="col-md-5">
+                        <label for="depIata" class="form-label fw-bold">Keberangkatan (IATA)</label>
+                        <input type="text" class="form-control form-control-lg text-uppercase" id="depIata" name="depIata" placeholder="Contoh: CGK" maxlength="3" required>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="arrIata" class="form-label fw-bold">Kedatangan (IATA)</label>
+                        <input type="text" class="form-control form-control-lg text-uppercase" id="arrIata" name="arrIata" placeholder="Contoh: NRT" maxlength="3">
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary btn-lg w-100 shadow" id="btnSearch">
+                            Cari <i class="fas fa-search ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Container untuk menampilkan hasil atau indikator loading -->
+    <div id="loadingIndicator" class="text-center mt-5 d-none">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-2 text-muted">Mengambil data dari AviationStack...</p>
+    </div>
+
+    <!-- Error Message Container -->
+    <div id="errorMessage" class="alert alert-danger mt-4 d-none" role="alert">
+    </div>
+
+    <div id="flightResults" class="mt-4 row">
+        <!-- Results will be injected here via JavaScript -->
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Tambahkan FontAwesome untuk ikon jika belum ada di _Layout -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="~/js/site.js" asp-append-version="true"></script>
+}
